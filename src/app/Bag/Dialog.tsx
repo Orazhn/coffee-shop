@@ -9,7 +9,7 @@ import {
   } from "@/components/ui/dialog"
 import { Button } from "@/components/ui/button"
 import {ShoppingCart} from "lucide-react"
-import Item from "../types/ItemType"
+import Item from "../types/DataType"
 import { FC } from "react"
 import { useDispatch } from "react-redux";
 import { AppDispatch } from "../../state/store"
@@ -72,7 +72,7 @@ const DialogComponent:FC<DialogProps> = ({bagItems, total}) => {
   return (
     <Dialog>
         <DialogTrigger asChild>
-        <Button disabled={bagItems.length === 0}>
+        <Button disabled={!bagItems.length} className="flex gap-2">
           <ShoppingCart /> Purchase
         </Button>
       </DialogTrigger>

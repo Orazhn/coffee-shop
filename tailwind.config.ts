@@ -2,35 +2,25 @@ import type { Config } from "tailwindcss";
 
 
 export default {
-    darkMode: ["class"],
-    content: [
+  content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./node_modules/@nextui-org/theme/dist/components/(autocomplete|button|ripple|spinner|input|listbox|divider|popover|scroll-shadow).js"
   ],
   theme: {
-	screens: {
-		'sm': '320px',
-		// => @media (min-width: 640px) { ... }
-  
-		'md': '768px',
-		// => @media (min-width: 768px) { ... }
-  
-		'lg': '1024px',
-		// => @media (min-width: 1024px) { ... }
-  
-		'xl': '1100px',
-		// => @media (min-width: 1280px) { ... }
-  
-		'2xl': '1536px',
-		// => @media (min-width: 1536px) { ... }
-	},
+  	screens: {
+  		sm: '320px',
+  		md: '768px',
+  		lg: '1024px',
+  		xl: '1100px',
+  		'2xl': '1536px'
+  	},
   	extend: {
-		gridTemplateRows: {
-			'[auto,auto,1fr]': 'auto auto 1fr',
-		  },
   		colors: {
-			'regal-blue': '#6F4E37',
+  			coffeeBrown: '#b45f06',
+  			coffeeAccent: '#ffe9d5',
+  			'regal-blue': '#6F4E37',
   			background: 'hsl(var(--background))',
   			foreground: 'hsl(var(--foreground))',
   			card: {
@@ -86,8 +76,37 @@ export default {
   			lg: 'var(--radius)',
   			md: 'calc(var(--radius) - 2px)',
   			sm: 'calc(var(--radius) - 4px)'
+  		},
+  		keyframes: {
+			"shine": {
+				from: { backgroundPosition: '200% 0' },
+				to: { backgroundPosition: '-200% 0' },
+			},
+  			'accordion-down': {
+  				from: {
+  					height: '0'
+  				},
+  				to: {
+  					height: 'var(--radix-accordion-content-height)'
+  				}
+  			},
+  			'accordion-up': {
+  				from: {
+  					height: 'var(--radix-accordion-content-height)'
+  				},
+  				to: {
+  					height: '0'
+  				}
+  			}
+  		},
+  		animation: {
+			"shine": "shine 8s ease-in-out infinite",
+			
+  			'accordion-down': 'accordion-down 0.2s ease-out',
+  			'accordion-up': 'accordion-up 0.2s ease-out'
   		}
   	}
   },
   plugins: [require('tailwindcss-motion')],
+  darkMode: 'class'
 } satisfies Config;

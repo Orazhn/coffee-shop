@@ -1,5 +1,5 @@
 export default interface Item {
-    _id: number
+    _id: string
     id: number
     name: string,
     image_url: string

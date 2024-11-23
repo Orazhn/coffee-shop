@@ -6,7 +6,7 @@ import { AppDispatch } from "../../state/store"
 import {
     addItem, removeItem
 } from "../../state/bag/bagSlice";
-import Item from "@/app/types/ItemType";
+import Item from "@/app/types/DataType";
 import toast from "react-hot-toast";
 
 interface ActionButtonProps {
@@ -41,7 +41,7 @@ const ActionButton: React.FC<ActionButtonProps> = ({ children, className, item, 
             })
           }} 
         >
-            {children}
+           <p className="flex gap-2 items-center">{children}</p> 
         </Button> : 
         <Button 
           className={className}

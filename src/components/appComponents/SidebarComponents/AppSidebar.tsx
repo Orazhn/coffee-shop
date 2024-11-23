@@ -9,12 +9,16 @@ import {
     SidebarMenu,
     SidebarMenuItem,
     SidebarMenuButton,
+    SidebarTrigger
   } from "@/components/ui/sidebar"
 import { Home, Coffee, ScrollText, BookHeart } from "lucide-react"
-import FavItemsSidebar from "../ui/BagSidebar";
-  
+import FavItemsSidebar from "./BagSidebar";
+import Link from "next/link";
+
+
+
+
   export default function AppSidebar() {
-   
     const items =  [
       {
           title: "Home",
@@ -22,7 +26,7 @@ import FavItemsSidebar from "../ui/BagSidebar";
           icon: Home,
       },
       {
-          title: "Coffee",
+          title: "Coffees",
           url: "/Coffees",
           icon: Coffee,
       },
@@ -42,16 +46,19 @@ import FavItemsSidebar from "../ui/BagSidebar";
         <SidebarHeader/>
         <SidebarContent>
           <SidebarGroup>
-          <SidebarGroupLabel>Application</SidebarGroupLabel>
+            <div className="flex w-full justify-between md:hidden">
+              <SidebarGroupLabel>Application</SidebarGroupLabel>
+              <SidebarTrigger/>
+            </div>
             <SidebarGroupContent>
                 <SidebarMenu>
                 {items.map((item) => (
                     <SidebarMenuItem key={item.title}>
-                    <SidebarMenuButton asChild>
-                        <a href={item.url}>
-                        <item.icon />
-                        <span>{item.title}</span>
-                        </a>
+                    <SidebarMenuButton asChild >
+                        <Link href={item.url}>
+                          <item.icon />
+                          <span>{item.title}</span>
+                        </Link>
                     </SidebarMenuButton>
                     </SidebarMenuItem>
                 ))}

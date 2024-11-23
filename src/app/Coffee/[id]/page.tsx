@@ -1,4 +1,4 @@
-import Item from "@/app/types/ItemType";
+import Item from "@/app/types/DataType";
 import Image from "next/image";
 import { ShoppingBag } from "lucide-react";
 import ActionButton from "@/components/appComponents/ActionButton";

@@ -10,7 +10,6 @@ const redis = new Redis({
 
 async function GetUserData(req: NextRequest) {
   const { userId } = getAuth(req);
-  console.log(userId)
   return userId;
 }
 

@@ -1,6 +1,6 @@
 "use client"
 import React, { useEffect, useState } from 'react';
-import { Order } from '../types/ItemType';
+import { Order } from '../types/DataType';
 import OrderCard from './OrderComponent';
 
 const getOrdersHistory = async () => {
@@ -28,7 +28,6 @@ const OrderHistory = () => {
         const orders = await getOrdersHistory();
         if (orders) {
           setOrders(orders);
-          console.log(orders);
         } else {
           setError('Failed to fetch orders');
         }
@@ -44,18 +43,24 @@ const OrderHistory = () => {
 
   if (loading) return <div className='w-screen h-screen flex justify-center items-center text-xl'>Loading...</div>;
   if (error) return <div>{error}</div>;
+  if (!orders.length) return (
+    <div className='w-screen h-screen flex justify-center items-center text-xl font-mono'>
+      It looks like you have no orders yet
+    </div>)
 
   return (
-    <div className="text-black p-6 flex flex-wrap gap-4">
-      {orders.map((order, index) => (
-        <OrderCard
-          key={order.date} 
-          orderNumber={index + 1} 
-          items={order.bagItems} 
-          total={order.total}
-          date={order.date}
-        />
-      ))}
+    <div className="flex items-center w-screen p-6 ">
+      <div className="text-black flex flex-wrap w-full gap-4 justify-center">
+        {orders.map((order, index) => (
+          <OrderCard
+            key={order.date}
+            orderNumber={index + 1}
+            items={order.bagItems}
+            total={order.total}
+            date={order.date}
+          />
+        ))}
+      </div>
     </div>
   );
 };
