@@ -1,5 +1,3 @@
-Here’s an updated version of your README.md with icons added for better visual appeal:
-
 ☕ Coffee Shop Application
 
 Welcome to the Coffee Shop Application, a modern, full-stack web application designed for coffee enthusiasts. This project combines the power of cutting-edge tools and frameworks to deliver a dynamic and visually appealing coffee shop experience where users can browse, order, and manage their accounts seamlessly.
