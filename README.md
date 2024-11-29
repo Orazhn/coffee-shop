@@ -29,9 +29,8 @@ git clone https://github.com/Orazhn/coffee-shop.git
 cd coffee-shop
 
 
-	2.	Install dependencies:
-
-npm install
+	2.	Install dependencies: 
+ 	npm install
 
 
 	3.	Set up environment variables:
@@ -58,14 +57,11 @@ UPSTASH_REDIS_REST_TOKEN,
 
 
 
-	4.	Run the development server:
+	4.	Run the development server: 
+ 	npm run dev
 
-npm run dev
-
-
-	5.	Open your browser and navigate to:
-
-http://localhost:3000
+	5.	Open your browser and navigate to: 
+	http://localhost:3000
 
 
 🌍 Deployment
