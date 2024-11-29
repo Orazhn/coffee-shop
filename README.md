@@ -57,11 +57,9 @@ UPSTASH_REDIS_REST_TOKEN,
 
 
 
-	4.	Run the development server: 
- 	npm run dev
+	4.	Run the development server: npm run dev
 
-	5.	Open your browser and navigate to: 
-	http://localhost:3000
+	5.	Open your browser and navigate to: http://localhost:3000
 
 
 🌍 Deployment
