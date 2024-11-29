@@ -1,27 +1,26 @@
 import { Configuration, OpenAIApi } from "openai-edge";
-import { OpenAIStream, StreamingTextResponse } from 'ai';
+import { OpenAIStream, StreamingTextResponse } from "ai";
 
-export const runtime = 'edge'; 
+export const runtime = "edge";
 
 const config = new Configuration({
-    apiKey: process.env.OPENAI_API_KEY
+  apiKey: process.env.OPENAI_API_KEY,
 });
 const openai = new OpenAIApi(config);
 
 export async function POST(request: Request) {
-    const { messages } = await request.json();
+  const { messages } = await request.json();
 
+  const response = await openai.createChatCompletion({
+    model: "gpt-4o",
+    stream: true,
+    messages: [
+      { role: "user", content: "You are a helpful assistant." },
+      { role: "system", content: `You are a coffee assistant` },
+      ...messages,
+    ],
+  });
 
-    const response = await openai.createChatCompletion({
-        model: "gpt-4o",
-        stream: true,
-        messages: [
-            { role: "user", content: "You are a helpful assistant." },
-            { role: "system", content: `You are a coffee assistant`},
-            ...messages
-        ]
-    });
-
-    const stream = await OpenAIStream(response);
-    return new StreamingTextResponse(stream);
+  const stream = await OpenAIStream(response);
+  return new StreamingTextResponse(stream);
 }

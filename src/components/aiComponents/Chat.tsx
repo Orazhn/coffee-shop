@@ -23,7 +23,7 @@ const Chat = () => {
   return (
     <div>
         {open ? 
-            <div className={`flex flex-col items-center justify-between bg-gray-300 dark:bg-zinc-900 rounded-xl h-[500px] w-80 `}>
+            <div className='flex flex-col items-center justify-between bg-gray-300 dark:bg-zinc-900 rounded-xl h-[500px] w-80 motion-preset-slide-up-left-md'>
             <div className=" w-full">
               <Button onClick={() => setOpen(false)} className="px-1">
                 <IoIosClose className="text-3xl"/>
@@ -80,8 +80,8 @@ const Chat = () => {
                 onChange={handleInputChange}
                 autoFocus
               />
-              <Button type="submit" className="bg-white hover:bg-slate-200 px-3">
-                <IoMdSend className="text-xl"/>
+              <Button type="submit" className="bg-white hover:bg-slate-200 px-3 dark:bg-zinc-900 dark:hover:bg-zinc-800">
+                <IoMdSend className="text-xl text-black dark:text-white"/>
               </Button>
             </form>
           </div> : 

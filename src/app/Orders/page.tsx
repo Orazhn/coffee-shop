@@ -1,12 +1,12 @@
-import React from 'react'
-import OrderHistory from './OrderHistory'
+import React from "react";
+import OrderHistory from "./OrderHistory";
 
 const page = () => {
   return (
     <div>
-        <OrderHistory/>
+      <OrderHistory />
     </div>
-  )
-}
+  );
+};
 
-export default page
+export default page;

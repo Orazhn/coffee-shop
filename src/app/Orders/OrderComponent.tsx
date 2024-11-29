@@ -1,6 +1,6 @@
-import React from 'react';
-import Item from '../types/DataType';
-import OrderCard from './OrderCard';
+import React from "react";
+import Item from "../types/DataType";
+import OrderCard from "./OrderCard";
 
 interface OrderCardProps {
   orderNumber?: number;
@@ -9,24 +9,33 @@ interface OrderCardProps {
   total: number;
 }
 
-const OrderComponent: React.FC<OrderCardProps> = ({ orderNumber, date, items, total }) => {
+const OrderComponent: React.FC<OrderCardProps> = ({
+  orderNumber,
+  date,
+  items,
+  total,
+}) => {
   return (
     <div className="border p-4 rounded-lg shadow-md bg-white dark:bg-zinc-900 md:w-5/12 xl:w-3/12 sm:w-full">
       <div className="flex justify-between items-center mb-4">
         <div>
-          <h4 className="text-lg font-semibold text-gray-900 dark:text-gray-100">Order #{orderNumber}</h4>
+          <h4 className="text-lg font-semibold text-gray-900 dark:text-gray-100">
+            Order #{orderNumber}
+          </h4>
           <p className="text-sm text-gray-500 dark:text-gray-400">{date}</p>
         </div>
       </div>
       <div>
         {items.map((item) => (
-          <OrderCard key={item._id} item={item}/>
+          <OrderCard key={item._id} item={item} />
         ))}
       </div>
 
       <div className="border-t mt-4 pt-4 flex justify-between items-center">
         <p className="font-medium text-gray-700 dark:text-gray-300">Total:</p>
-        <p className="font-bold text-lg text-gray-900 dark:text-gray-100">${total.toFixed(2)}</p>
+        <p className="font-bold text-lg text-gray-900 dark:text-gray-100">
+          ${total.toFixed(2)}
+        </p>
       </div>
     </div>
   );

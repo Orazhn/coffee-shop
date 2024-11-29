@@ -1,12 +1,12 @@
-import React from 'react'
-import FavItems from './BagItems'
+import React from "react";
+import FavItems from "./BagItems";
 
 const Page = () => {
   return (
-    <div> 
-       <FavItems/>
+    <div>
+      <FavItems />
     </div>
-  )
-}
+  );
+};
 
-export default Page
+export default Page;

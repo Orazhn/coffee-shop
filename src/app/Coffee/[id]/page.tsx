@@ -19,9 +19,13 @@ async function getProduct(id: number): Promise<Item> {
   }
 }
 
-export default async function ProductPage({params}: {params: Promise<{ id: string }> }): Promise<JSX.Element> {
-  const { id } = await params; 
-  const productId = parseInt(id, 10); 
+export default async function ProductPage({
+  params,
+}: {
+  params: Promise<{ id: string }>;
+}): Promise<JSX.Element> {
+  const { id } = await params;
+  const productId = parseInt(id, 10);
 
   try {
     const product: Item = await getProduct(productId);
@@ -89,8 +93,8 @@ export default async function ProductPage({params}: {params: Promise<{ id: strin
                   key={i}
                   className={`h-4 w-4 mx-1 rounded-full ${
                     i < product.roast_level ? "bg-purple-600" : "bg-gray-300"
-                  }`}>
-                </div>
+                  }`}
+                ></div>
               ))}
             </div>
             <h2 className="text-lg font-semibold text-gray-800 mt-8">
