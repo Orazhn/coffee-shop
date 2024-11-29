@@ -29,8 +29,7 @@ git clone https://github.com/Orazhn/coffee-shop.git
 cd coffee-shop
 
 
-	2.	Install dependencies: 
- 	npm install
+	2.	Install dependencies: npm install
 
 
 	3.	Set up environment variables:
