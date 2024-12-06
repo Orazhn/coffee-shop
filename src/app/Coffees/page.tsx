@@ -10,7 +10,7 @@ const page = async () => {
   const data: Item[] = await result.json();
 
   return (
-    <div className="flex flex-col items-center justify-center gap-4  w-screen">
+    <div className="flex flex-col items-center justify-center gap-4 w-screen">
       <h1 className="font-mono text-xl flex gap-2 mt-5">
         All Coffees <CoffeeIcon />
       </h1>

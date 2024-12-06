@@ -14,7 +14,7 @@ import { dark } from "@clerk/themes";
 import { StoreProvider } from "@/state/StoreProvider";
 import Chat from "@/components/aiComponents/Chat";
 import { Toaster } from "react-hot-toast";
-import { ThemeProvider } from "@/components/Mode/theme-provider";
+import { ThemeProvider } from "@/providers/Mode/theme-provider";
 
 export default function RootLayout({
   children,
@@ -25,6 +25,7 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body>
         <ClerkProvider
+          dynamic
           appearance={{
             baseTheme: [dark],
           }}

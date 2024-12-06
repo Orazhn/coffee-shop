@@ -2,7 +2,7 @@ import { SignInButton, SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 import { Menubar, MenubarMenu } from "@/components/ui/menubar";
 import { SidebarTrigger } from "../ui/sidebar";
 import { Button } from "../ui/button";
-import { ModeToggle } from "@/components/Mode/ThemeButton";
+import { ModeToggle } from "@/providers/Mode/ThemeButton";
 import { ShoppingBag, ScrollText as OrdersList } from "lucide-react";
 import { CiCoffeeCup } from "react-icons/ci";
 import HeaderButton from "./HeaderComponents/HeaderButton";
