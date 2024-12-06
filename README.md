@@ -1,36 +1,66 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+☕ Coffee Shop Application
 
-## Getting Started
+Welcome to the Coffee Shop Application, a modern, full-stack web application designed for coffee enthusiasts. This project combines the power of cutting-edge tools and frameworks to deliver a dynamic and visually appealing coffee shop experience where users can browse, order, and manage their accounts seamlessly.
 
-First, run the development server:
+✨ Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+	•	🔒 User Authentication: Secure and seamless user authentication with Clerk.
+	•	⚡ Dynamic Content Rendering: Built using Next.js for fast and efficient server-side rendering (SSR) and static site generation (SSG).
+	•	🗂️ State Management: Efficient state handling with Redux.
+	•	🎨 Styling: Responsive and customizable design with Tailwind CSS.
+	•	🛡️ Type Safety: Fully typed codebase using TypeScript.
+	•	🤖 AI-Powered Features: Integrates OpenAI API for smart recommendations and enhanced interactivity.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+🛠️ Tech Stack
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+	•	🌐 Frontend Framework: Next.js
+	•	🎨 Styling: Tailwind CSS
+	•	🗂️ State Management: Redux Toolkit
+	•	🔐 Authentication: Clerk
+	•	🤖 AI Integration: OpenAI API
+	•	📜 Language: TypeScript
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+🚀 Installation
 
-## Learn More
+To set up the project locally, follow these steps:
+	1.	Clone the repository:
 
-To learn more about Next.js, take a look at the following resources:
+git clone https://github.com/Orazhn/coffee-shop.git
+cd coffee-shop
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+	2.	Install dependencies: npm install
 
-## Deploy on Vercel
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+	3.	Set up environment variables:
+	•	Create a .env.local file in the root directory.
+	•	Add the following keys:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+CLERK_API_KEY,
+OPENAI_API_KEY,
+NEXT_PUBLIC_CLERK_FRONTEND_API,
+NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY,
+CLERK_SECRET_KEY,
+NEXT_PUBLIC_CLERK_SIGN_IN_URL=/sign-in
+NEXT_PUBLIC_CLERK_SIGN_UP_URL=/sign-up
+
+OPENAI_API_KEY,
+
+KV_REST_API_READ_ONLY_TOKEN,
+KV_REST_API_TOKEN,
+KV_REST_API_URL,
+KV_URL,
+
+UPSTASH_REDIS_REST_URL,
+UPSTASH_REDIS_REST_TOKEN,
+
+
+
+	4.	Run the development server: npm run dev
+
+	5.	Open your browser and navigate to: http://localhost:3000
+
+
+🌍 Deployment
+
+The app is deployed on Vercel for easy and fast deployment.
