@@ -19,7 +19,7 @@ import { Truck } from "lucide-react";
 
 interface DialogProps {
   bagItems: Item[];
-  total: number;
+  total: string;
 }
 
 const DialogComponent: FC<DialogProps> = ({ bagItems, total }) => {

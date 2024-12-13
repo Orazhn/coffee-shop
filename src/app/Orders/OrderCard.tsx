@@ -12,10 +12,10 @@ const OrderCard: FC<OrderCardProps> = ({ item }) => {
   const { push } = useRouter();
   return (
     <div
-      className="flex items-center justify-between cursor-pointer "
+      className="flex items-center justify-between cursor-pointer w-full"
       onClick={() => push(`/Coffee/${item.id}`)}
     >
-      <div className="flex items-center justify-center w-10/12 rounded-md hover:bg-slate-200 hover:dark:bg-zinc-800">
+      <div className="flex items-center justify-start w-full rounded-md hover:bg-slate-200 hover:dark:bg-zinc-800">
         <div className="w-1/2 h-full rounded-md sm:w-full">
           <Image
             src={item.image_url}

@@ -2,12 +2,13 @@
 import React, { useEffect, useState } from "react";
 import { Order } from "../types/DataType";
 import OrderCard from "./OrderComponent";
+import LoadingPage from "./loading";
 
 const getOrdersHistory = async () => {
   try {
     const response = await fetch("/api/saveOrder", { method: "GET" });
     if (!response.ok) {
-      throw new Error(`Error fetching elements: ${response.statusText}`);
+      throw new Error("Error fetching elements: ${response.statusText}");
     }
     const data = await response.json();
     return data;
@@ -41,13 +42,8 @@ const OrderHistory = () => {
     fetchOrders();
   }, []);
 
-  if (loading)
-    return (
-      <div className="w-screen h-screen flex justify-center items-center text-xl">
-        Loading...
-      </div>
-    );
   if (error) return <div>{error}</div>;
+  if (loading) return <LoadingPage />;
   if (!orders.length)
     return (
       <div className="w-screen h-screen flex justify-center items-center text-xl font-mono">
@@ -56,8 +52,8 @@ const OrderHistory = () => {
     );
 
   return (
-    <div className="flex items-center w-screen p-6 ">
-      <div className="text-black flex flex-wrap w-full gap-4 justify-center">
+    <div className="flex justify-center flex-wrap">
+      <div className="text-black flex justify-center gap-4 p-6 flex-wrap">
         {orders.map((order, index) => (
           <OrderCard
             key={order.date}

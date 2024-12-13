@@ -12,12 +12,15 @@ const BagItems = () => {
   return (
     <div className="flex flex-col flex-wrap gap-4 text-white p-6 ">
       <div className="pl-4 flex items-center gap-4">
-        <DialogComponent bagItems={bagItems} total={calculateTotal(bagItems)} />
+        <DialogComponent
+          bagItems={bagItems}
+          total={calculateTotal(bagItems).toFixed(2)}
+        />
         <h3 className="text-black dark:text-white">
-          Total: {calculateTotal(bagItems)} $
+          Total: {calculateTotal(bagItems).toFixed(2)} $
         </h3>
       </div>
-      <div className="flex flex-wrap list-none px-3 gap-4">
+      <div className="flex flex-wrap list-none px-3 gap-4 justify-center">
         {bagItems.map((item: Item, index) => (
           <Coffee key={index} item={item} favItems={true} />
         ))}

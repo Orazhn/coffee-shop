@@ -8,18 +8,18 @@ const bagSlice = createSlice({
   initialState,
   reducers: {
     addItem: (state, action: PayloadAction<Item>) => {
-      const existingItem = state.find(item => item.id === action.payload.id);
+      const existingItem = state.find((item) => item.id === action.payload.id);
       if (existingItem) {
         existingItem.amount = (existingItem.amount || 0) + 1;
       } else {
         state.push({
           ...action.payload,
-          amount: 1
+          amount: 1,
         });
       }
     },
     removeItem: (state, action: PayloadAction<Item>) => {
-      const index = state.findIndex(item => item.id === action.payload.id);
+      const index = state.findIndex((item) => item.id === action.payload.id);
       if (index !== -1) {
         const item = state[index];
         if (item.amount > 1) {

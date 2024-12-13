@@ -1,16 +1,9 @@
-import {
-  ClerkProvider,
-  ClerkLoaded,
-  ClerkLoading,
-  SignedOut,
-  SignedIn,
-} from "@clerk/nextjs";
+import { ClerkProvider, ClerkLoaded, SignedOut, SignedIn } from "@clerk/nextjs";
 import "./globals.css";
 import Header from "@/components/appComponents/Header";
 import { SidebarProvider } from "@/components/ui/sidebar";
 import AppSidebar from "@/components/appComponents/AppSidebar";
 import Image from "next/image";
-import { dark } from "@clerk/themes";
 import { StoreProvider } from "@/state/StoreProvider";
 import Chat from "@/components/aiComponents/Chat";
 import { Toaster } from "react-hot-toast";
@@ -24,12 +17,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body>
-        <ClerkProvider
-          dynamic
-          appearance={{
-            baseTheme: [dark],
-          }}
-        >
+        <ClerkProvider dynamic>
           <ThemeProvider
             attribute="class"
             defaultTheme="system"
@@ -53,11 +41,6 @@ export default function RootLayout({
               </div>
             </SignedOut>
             <SignedIn>
-              <ClerkLoading>
-                <div className="flex flex-col justify-center items-center w-screen h-screen gap-2">
-                  <h1 className="text-xl">Loading...</h1>
-                </div>
-              </ClerkLoading>
               <ClerkLoaded>
                 <SidebarProvider defaultOpen={false}>
                   <StoreProvider>

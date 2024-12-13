@@ -1,11 +1,12 @@
-import React from "react";
+import React, { Suspense } from "react";
 import OrderHistory from "./OrderHistory";
+import LoadingPage from "./loading";
 
 const page = () => {
   return (
-    <div>
+    <Suspense fallback={<LoadingPage />}>
       <OrderHistory />
-    </div>
+    </Suspense>
   );
 };
 

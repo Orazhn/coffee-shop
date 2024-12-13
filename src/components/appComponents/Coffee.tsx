@@ -14,7 +14,7 @@ const Coffee: React.FC<{ item: Item; favItems?: boolean }> = ({
   const router = useRouter();
 
   return (
-    <div className="bg-white dark:bg-zinc-900 p-4 rounded-lg shadow hover:shadow-2xl transition">
+    <div className="bg-white dark:bg-zinc-900 p-4 rounded-lg shadow hover:shadow-2xl transition dark:hover:shadow-[0_4px_10px_rgba(255,255,255,0.5)]">
       <div className="cursor-pointer">
         <Image
           width={200}
