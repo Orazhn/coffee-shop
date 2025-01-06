@@ -9,13 +9,14 @@ import {
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { ShoppingCart } from "lucide-react";
-import Item from "../types/DataType";
+import Item from "../../types/DataType";
 import { FC } from "react";
 import { useDispatch } from "react-redux";
 import { AppDispatch } from "../../state/store";
 import { emptyBag } from "../../state/bag/bagSlice";
 import toast from "react-hot-toast";
 import { Truck } from "lucide-react";
+import { usePostOrder } from "@/hooks/Api/usePostOrder";
 
 interface DialogProps {
   bagItems: Item[];
@@ -24,6 +25,7 @@ interface DialogProps {
 
 const DialogComponent: FC<DialogProps> = ({ bagItems, total }) => {
   const dispatch = useDispatch<AppDispatch>();
+  const { orderFunc, isOrdering } = usePostOrder();
 
   const formatDate = (date: Date): string => {
     return new Intl.DateTimeFormat("en-GB", {
@@ -40,19 +42,9 @@ const DialogComponent: FC<DialogProps> = ({ bagItems, total }) => {
     const currentDate = new Date();
     const formattedDate = formatDate(currentDate);
     try {
-      await fetch("/api/saveOrder", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          bagItems,
-          total,
-          date: formattedDate,
-        }),
-      });
+      orderFunc({ bagItems, total: +total, date: formattedDate });
     } catch (error) {
-      console.error("Redis error while posting:", error);
+      return error;
     } finally {
       dispatch(emptyBag());
     }
@@ -104,6 +96,7 @@ const DialogComponent: FC<DialogProps> = ({ bagItems, total }) => {
             variant="expandIcon"
             Icon={Truck}
             iconPlacement="right"
+            disabled={isOrdering}
           >
             Order
           </Button>

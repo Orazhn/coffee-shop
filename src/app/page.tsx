@@ -2,7 +2,7 @@ import React from "react";
 import HomePageImages, {
   OrderButton,
 } from "@/components/appComponents/HomePageImages";
-import Item from "./types/DataType";
+import Item from "../types/DataType";
 import { FaStarHalfAlt } from "react-icons/fa";
 import { FaStar } from "react-icons/fa";
 import WordPullUp from "@/components/ui/word-pull-up";

@@ -1,8 +1,7 @@
-"use client";
 import React from "react";
 import Image from "next/image";
 import { FC } from "react";
-import Item from "../types/DataType";
+import Item from "../../types/DataType";
 import { useRouter } from "next/navigation";
 
 interface OrderCardProps {

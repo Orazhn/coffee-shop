@@ -8,6 +8,7 @@ import { StoreProvider } from "@/state/StoreProvider";
 import Chat from "@/components/aiComponents/Chat";
 import { Toaster } from "react-hot-toast";
 import { ThemeProvider } from "@/providers/Mode/theme-provider";
+import { ReactQueryProvider } from "@/providers/queryProvider";
 
 export default function RootLayout({
   children,
@@ -42,23 +43,25 @@ export default function RootLayout({
             </SignedOut>
             <SignedIn>
               <ClerkLoaded>
-                <SidebarProvider defaultOpen={false}>
-                  <StoreProvider>
-                    <div className="flex h-screen overflow-x-hidden">
-                      <AppSidebar />
-                      <div className="flex flex-col w-screen">
-                        <Header />
-                        <main className="flex-1 bg-gray-100 dark:bg-black mt-12">
-                          {children}
-                          <Toaster />
-                        </main>
-                        <div className="fixed bottom-0 right-0 shadow-2xl">
-                          <Chat />
+                <ReactQueryProvider>
+                  <SidebarProvider defaultOpen={false}>
+                    <StoreProvider>
+                      <div className="flex h-screen overflow-x-hidden">
+                        <AppSidebar />
+                        <div className="flex flex-col w-screen">
+                          <Header />
+                          <main className="flex-1 bg-gray-100 dark:bg-black mt-12">
+                            {children}
+                            <Toaster />
+                          </main>
+                          <div className="fixed bottom-0 right-0 shadow-2xl">
+                            <Chat />
+                          </div>
                         </div>
                       </div>
-                    </div>
-                  </StoreProvider>
-                </SidebarProvider>
+                    </StoreProvider>
+                  </SidebarProvider>
+                </ReactQueryProvider>
               </ClerkLoaded>
             </SignedIn>
           </ThemeProvider>

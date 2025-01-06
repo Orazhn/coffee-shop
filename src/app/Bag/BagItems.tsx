@@ -2,7 +2,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { RootState } from "../../state/store";
-import Item from "../types/DataType";
+import Item from "../../types/DataType";
 import Coffee from "@/components/appComponents/Coffee";
 import DialogComponent from "./Dialog";
 import { calculateTotal } from "@/state/bag/bagSlice";

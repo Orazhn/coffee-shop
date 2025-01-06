@@ -1,7 +1,8 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
-import Item from "@/app/types/DataType";
+import Item from "@/types/DataType";
 
-const initialState: Item[] = [];
+// Retrieve bag state from localStorage or use an empty array as the initial state
+const initialState: Item[] = JSON.parse(localStorage.getItem("bag") || "[]");
 
 const bagSlice = createSlice({
   name: "bag",
@@ -17,6 +18,8 @@ const bagSlice = createSlice({
           amount: 1,
         });
       }
+      // Save updated state to localStorage
+      localStorage.setItem("bag", JSON.stringify(state));
     },
     removeItem: (state, action: PayloadAction<Item>) => {
       const index = state.findIndex((item) => item.id === action.payload.id);
@@ -28,13 +31,18 @@ const bagSlice = createSlice({
           state.splice(index, 1);
         }
       }
+      // Save updated state to localStorage
+      localStorage.setItem("bag", JSON.stringify(state));
     },
     emptyBag: (state) => {
       state.length = 0;
+      // Save updated state to localStorage
+      localStorage.setItem("bag", JSON.stringify(state));
     },
   },
 });
 
+// Helper function to calculate the total cost
 export const calculateTotal = (state: Item[]) => {
   return state.reduce((total, item) => {
     const itemTotal = (item.amount || 0) * item.price;

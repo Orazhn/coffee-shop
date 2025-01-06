@@ -4,7 +4,7 @@ import { Button } from "../ui/button";
 import { useDispatch } from "react-redux";
 import { AppDispatch } from "../../state/store";
 import { addItem, removeItem } from "../../state/bag/bagSlice";
-import Item from "@/app/types/DataType";
+import Item from "@/types/DataType";
 import toast from "react-hot-toast";
 
 interface ActionButtonProps {

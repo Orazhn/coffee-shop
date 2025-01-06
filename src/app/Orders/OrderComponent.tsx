@@ -1,15 +1,15 @@
 import React from "react";
-import Item from "../types/DataType";
+import Item from "../../types/DataType";
 import OrderCard from "./OrderCard";
 
-interface OrderCardProps {
+interface OrderComponentProps {
   orderNumber?: number;
   date: string;
   items: Item[];
   total: number;
 }
 
-const OrderComponent: React.FC<OrderCardProps> = ({
+const OrderComponent: React.FC<OrderComponentProps> = ({
   orderNumber,
   date,
   items,
@@ -36,7 +36,7 @@ const OrderComponent: React.FC<OrderCardProps> = ({
       <div className="border-t mt-4 pt-4 flex justify-between items-center">
         <p className="font-medium text-gray-700 dark:text-gray-300">Total:</p>
         <p className="font-bold text-lg text-gray-900 dark:text-gray-100">
-          ${total.toFixed(2)}
+          ${total}
         </p>
       </div>
     </div>
