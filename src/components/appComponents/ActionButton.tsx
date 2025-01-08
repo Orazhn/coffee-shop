@@ -1,9 +1,7 @@
 "use client";
 import React from "react";
 import { Button } from "../ui/button";
-import { useDispatch } from "react-redux";
-import { AppDispatch } from "../../state/store";
-import { addItem, removeItem } from "../../state/bag/bagSlice";
+import useBagStore from "@/store/bagStore";
 import Item from "@/types/DataType";
 import toast from "react-hot-toast";
 
@@ -28,7 +26,7 @@ const ActionButton: React.FC<ActionButtonProps> = ({
   variant,
   action,
 }) => {
-  const dispatch = useDispatch<AppDispatch>();
+  const { addItem, removeItem } = useBagStore();
   const toastContent =
     action == "add"
       ? `${item.name} was added to bag`
@@ -40,7 +38,7 @@ const ActionButton: React.FC<ActionButtonProps> = ({
           className={className}
           variant={variant}
           onClick={() => {
-            dispatch(addItem(item));
+            addItem(item);
             toast.success(toastContent, {
               style: {
                 border: "1px solid #713200",
@@ -61,7 +59,7 @@ const ActionButton: React.FC<ActionButtonProps> = ({
           className={className}
           variant={variant}
           onClick={() => {
-            dispatch(removeItem(item));
+            removeItem(item);
             toast.success(toastContent, {
               style: {
                 border: "1px solid red",

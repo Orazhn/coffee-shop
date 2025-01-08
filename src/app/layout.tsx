@@ -4,7 +4,6 @@ import Header from "@/components/appComponents/Header";
 import { SidebarProvider } from "@/components/ui/sidebar";
 import AppSidebar from "@/components/appComponents/AppSidebar";
 import Image from "next/image";
-import { StoreProvider } from "@/state/StoreProvider";
 import Chat from "@/components/aiComponents/Chat";
 import { Toaster } from "react-hot-toast";
 import { ThemeProvider } from "@/providers/Mode/theme-provider";
@@ -45,21 +44,19 @@ export default function RootLayout({
               <ClerkLoaded>
                 <ReactQueryProvider>
                   <SidebarProvider defaultOpen={false}>
-                    <StoreProvider>
-                      <div className="flex h-screen overflow-x-hidden">
-                        <AppSidebar />
-                        <div className="flex flex-col w-screen">
-                          <Header />
-                          <main className="flex-1 bg-gray-100 dark:bg-black mt-12">
-                            {children}
-                            <Toaster />
-                          </main>
-                          <div className="fixed bottom-0 right-0 shadow-2xl">
-                            <Chat />
-                          </div>
+                    <div className="flex h-screen overflow-x-hidden">
+                      <AppSidebar />
+                      <div className="flex flex-col w-screen">
+                        <Header />
+                        <main className="flex-1 bg-gray-100 dark:bg-black mt-12">
+                          {children}
+                          <Toaster />
+                        </main>
+                        <div className="fixed bottom-0 right-0 shadow-2xl">
+                          <Chat />
                         </div>
                       </div>
-                    </StoreProvider>
+                    </div>
                   </SidebarProvider>
                 </ReactQueryProvider>
               </ClerkLoaded>

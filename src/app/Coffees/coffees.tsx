@@ -3,15 +3,21 @@ import React from "react";
 import Coffee from "@/components/appComponents/Coffee";
 import useGetCoffees from "@/hooks/Api/useGetCoffees";
 import LoadingPage from "./loading";
-import { useSelector } from "react-redux";
-import { RootState } from "@/state/store";
+import useSearchStore from "@/store/searchStore";
 
 const Coffees = () => {
-  const search = useSelector((state: RootState) => state.search.search);
+  const { search } = useSearchStore();
   const { coffees, isLoading } = useGetCoffees(search);
 
   if (isLoading) {
     return <LoadingPage />;
+  }
+  if (!coffees?.length) {
+    return (
+      <div className=" h-full  flex items-center justify-center text-2xl">
+        Not found
+      </div>
+    );
   }
 
   return (

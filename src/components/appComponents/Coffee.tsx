@@ -24,10 +24,12 @@ const Coffee: React.FC<{ item: Item; favItems?: boolean }> = ({
         </Link>
       </div>
       <div className="mt-4 text-md text-gray-700 dark:text-gray-300 w-full flex justify-between items-center">
-        <h1>{item.name}</h1>
-        <span className="text-md text-gray-700 dark:text-gray-300">
-          {item.amount}
-        </span>
+        <div className="flex justify-between w-full">
+          <h1>{item.name}</h1>{" "}
+          <p className="mt-1 text-lg font-medium text-gray-500 dark:text-gray-400 sm:text-sm">
+            {item.price} $
+          </p>
+        </div>
       </div>
       <div className="flex justify-between pt-2 sm:flex-col md:flex-row md:items-center">
         {!favItems ? (
@@ -42,8 +44,8 @@ const Coffee: React.FC<{ item: Item; favItems?: boolean }> = ({
             Remove from bag
           </ActionButton>
         )}
-        <p className="mt-1 text-lg font-medium text-gray-500 dark:text-gray-400 sm:text-sm">
-          {item.price} $
+        <p className="text-md text-gray-700 dark:text-gray-300">
+          {item.amount}
         </p>
       </div>
       <Link href={`/Coffee/${item.id}`}>

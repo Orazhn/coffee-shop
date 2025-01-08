@@ -12,9 +12,3 @@ export default interface Item {
   grind_option: string[];
   amount: number;
 }
-
-export interface Order {
-  bagItems: Item[];
-  total: number;
-  date: string;
-}

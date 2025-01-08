@@ -7,14 +7,14 @@ import { ShoppingBag, ScrollText as OrdersList } from "lucide-react";
 import { CiCoffeeCup } from "react-icons/ci";
 import HeaderButton from "./HeaderComponents/HeaderButton";
 import { Input } from "../ui/input";
-import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "@/state/store";
-import { updateSearch } from "@/state/search/searchSlice";
+import useSearchStore from "@/store/searchStore";
 import { Search } from "lucide-react";
+import { usePathname } from "next/navigation";
 
 const Header = () => {
-  const dispatch = useDispatch();
-  const search = useSelector((state: RootState) => state.search.search);
+  const { search, updateSearch } = useSearchStore();
+  const pathname = usePathname();
+
   const HeaderTabs = [
     {
       name: "Coffees",
@@ -43,15 +43,17 @@ const Header = () => {
             {HeaderTabs.map((tab) => (
               <HeaderButton tab={tab} key={tab.path} />
             ))}
-            <div className="flex items-center gap-2">
-              <Input
-                className=""
-                placeholder="Search Coffees..."
-                value={search}
-                onChange={(e) => dispatch(updateSearch(e.target.value))}
-              />
-              <Search />
-            </div>
+            {pathname == "/Coffees" && (
+              <div className="flex items-center gap-2">
+                <Input
+                  className=""
+                  placeholder="Search Coffees..."
+                  value={search}
+                  onChange={(e) => updateSearch(e.target.value)}
+                />
+                <Search />
+              </div>
+            )}
           </div>
           <UserButton />
         </MenubarMenu>

@@ -11,20 +11,18 @@ import { Button } from "@/components/ui/button";
 import { ShoppingCart } from "lucide-react";
 import Item from "../../types/DataType";
 import { FC } from "react";
-import { useDispatch } from "react-redux";
-import { AppDispatch } from "../../state/store";
-import { emptyBag } from "../../state/bag/bagSlice";
+import useBagStore from "@/store/bagStore";
 import toast from "react-hot-toast";
 import { Truck } from "lucide-react";
 import { usePostOrder } from "@/hooks/Api/usePostOrder";
 
 interface DialogProps {
-  bagItems: Item[];
+  bag: Item[];
   total: string;
 }
 
-const DialogComponent: FC<DialogProps> = ({ bagItems, total }) => {
-  const dispatch = useDispatch<AppDispatch>();
+const DialogComponent: FC<DialogProps> = ({ bag, total }) => {
+  const { emptyBag } = useBagStore();
   const { orderFunc, isOrdering } = usePostOrder();
 
   const formatDate = (date: Date): string => {
@@ -42,11 +40,11 @@ const DialogComponent: FC<DialogProps> = ({ bagItems, total }) => {
     const currentDate = new Date();
     const formattedDate = formatDate(currentDate);
     try {
-      orderFunc({ bagItems, total: +total, date: formattedDate });
+      orderFunc({ bagItems: bag, total: +total, date: formattedDate });
     } catch (error) {
       return error;
     } finally {
-      dispatch(emptyBag());
+      emptyBag();
     }
   };
 
@@ -60,7 +58,7 @@ const DialogComponent: FC<DialogProps> = ({ bagItems, total }) => {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button disabled={!bagItems.length} className="flex gap-2">
+        <Button disabled={!bag.length} className="flex gap-2">
           <ShoppingCart /> Purchase
         </Button>
       </DialogTrigger>
@@ -69,7 +67,7 @@ const DialogComponent: FC<DialogProps> = ({ bagItems, total }) => {
           <DialogTitle>Your Bag</DialogTitle>
         </DialogHeader>
         <div className="mt-4 space-y-4">
-          {bagItems.map((item, index) => (
+          {bag.map((item, index) => (
             <div
               key={index}
               className="flex justify-between items-center border-b pb-2"

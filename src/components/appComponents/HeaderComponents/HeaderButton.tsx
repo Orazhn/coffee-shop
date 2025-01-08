@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
-import { redirect } from "next/navigation";
 import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
 interface HeaderButtonProps {
   tab: {
@@ -13,13 +13,11 @@ interface HeaderButtonProps {
 
 const HeaderButton: React.FC<HeaderButtonProps> = ({ tab }) => {
   return (
-    <Button
-      className="flex gap-1"
-      onClick={() => redirect(tab.path)}
-      key={tab.name}
-    >
-      {tab.icon} {tab.name}
-    </Button>
+    <Link href={tab.path}>
+      <Button className="flex gap-1" key={tab.name}>
+        {tab.icon} {tab.name}
+      </Button>
+    </Link>
   );
 };
 

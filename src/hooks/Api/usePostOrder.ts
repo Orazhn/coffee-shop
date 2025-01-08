@@ -1,6 +1,6 @@
 import { useMutation } from "@tanstack/react-query";
 import { ordersService } from "@/services/orders.service";
-import { Order } from "@/types/DataType";
+import Order from "@/types/Order";
 import useUserId from "./useGetUserId";
 
 export function usePostOrder() {

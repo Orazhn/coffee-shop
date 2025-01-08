@@ -1,4 +1,4 @@
-import { Order } from "@/types/DataType";
+import Order from "@/types/Order";
 import { Redis } from "@upstash/redis";
 
 class OrdersService {

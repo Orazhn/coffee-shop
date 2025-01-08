@@ -1,4 +1,4 @@
-import { useQuery, keepPreviousData } from "@tanstack/react-query";
+import { useQuery } from "@tanstack/react-query";
 import { coffeeService } from "@/services/coffees.service";
 import Item from "@/types/DataType";
 
@@ -17,7 +17,6 @@ const useGetCoffees = (
       );
       return newValue;
     },
-    placeholderData: keepPreviousData,
   });
 
   return { coffees: data, isLoading };
