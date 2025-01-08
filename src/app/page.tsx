@@ -9,7 +9,8 @@ import WordPullUp from "@/components/ui/word-pull-up";
 import LetterPullup from "@/components/ui/letter-pullup";
 
 const Home = async () => {
-  const result = await fetch("https://fake-coffee-api.vercel.app/api");
+  const url = process.env.COFFEE_API;
+  const result = await fetch(`${url}`);
   const resultData: Item[] = await result.json();
 
   return (
