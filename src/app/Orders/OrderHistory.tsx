@@ -8,9 +8,9 @@ const OrderHistory = () => {
   const { orders, isLoading } = useGetOrders();
 
   if (isLoading) return <LoadingPage />;
-  if (!orders)
+  if (!orders?.length)
     return (
-      <div className="w-screen h-screen flex justify-center items-center text-xl font-mono">
+      <div className="w-screen h-screen flex justify-center items-center text-xl font-mono text-white">
         It looks like you have no orders yet
       </div>
     );
