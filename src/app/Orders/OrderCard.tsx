@@ -9,22 +9,23 @@ interface OrderCardProps {
 }
 const OrderCard: FC<OrderCardProps> = ({ item }) => {
   const { push } = useRouter();
+  console.log(item);
   return (
     <div
       className="flex items-center justify-between cursor-pointer w-full"
       onClick={() => push(`/Coffee/${item.id}`)}
     >
-      <div className="flex items-center justify-start w-full rounded-md hover:bg-slate-200 hover:dark:bg-zinc-800">
-        <div className="w-1/2 h-full rounded-md sm:w-full">
+      <div className="flex items-center justify-start h-full rounded-md hover:bg-slate-200 hover:dark:bg-zinc-800">
+        <div className="relative w-[200px] h-[150px] rounded-md">
           <Image
             src={item.image_url}
             alt={item.name}
-            width={200}
-            height={350}
+            fill
+            className="object-cover rounded-md"
           />
         </div>
         <div className="w-full">
-          <p className="font-medium dark:text-white">{item.name}</p>
+          <p className="font-medium dark:text-white text-wrap">{item.name}</p>
           <p className="text-sm text-gray-500">
             Quantity: {item.amount} | ${item.price}
           </p>

@@ -16,7 +16,7 @@ const OrderComponent: React.FC<OrderComponentProps> = ({
   total,
 }) => {
   return (
-    <div className="border p-4 flex flex-col justify-between rounded-lg shadow-md bg-white dark:bg-zinc-900 md:w-5/12 xl:w-3/12 sm:w-full">
+    <div className="border p-4 flex flex-col justify-between rounded-lg shadow-md bg-white dark:bg-zinc-900 md:w-5/12 xl:w-5/12 sm:w-full">
       <div>
         <div className="flex justify-between items-center mb-4">
           <div>
