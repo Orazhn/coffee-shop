@@ -10,7 +10,7 @@ const OrderHistory = () => {
   if (isLoading) return <LoadingPage />;
   if (!orders?.length)
     return (
-      <div className="w-screen h-screen flex justify-center items-center text-xl font-mono text-white">
+      <div className="w-screen h-screen flex justify-center items-center text-xl font-mono text-black dark:text-white">
         It looks like you have no orders yet
       </div>
     );

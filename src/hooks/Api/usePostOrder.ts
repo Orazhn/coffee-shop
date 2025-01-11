@@ -1,10 +1,10 @@
 import { useMutation } from "@tanstack/react-query";
 import { ordersService } from "@/services/orders.service";
 import Order from "@/types/Order";
-import useUserId from "./useGetUserId";
+import useGetUserId from "./useGetUserId";
 
 export function usePostOrder() {
-  const userId = useUserId();
+  const userId = useGetUserId();
   const { mutate, isPending, isSuccess } = useMutation({
     mutationKey: ["post order"],
     mutationFn: (order: Order) => ordersService.postOrder(userId, order),

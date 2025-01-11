@@ -1,8 +1,8 @@
 import { useAuth } from "@clerk/nextjs";
 
-const useUserId = () => {
+const useGetUserId = () => {
   const { userId } = useAuth();
   return userId;
 };
 
-export default useUserId;
+export default useGetUserId;

@@ -9,7 +9,6 @@ interface OrderCardProps {
 }
 const OrderCard: FC<OrderCardProps> = ({ item }) => {
   const { push } = useRouter();
-  console.log(item);
   return (
     <div
       className="flex items-center justify-between cursor-pointer w-full"

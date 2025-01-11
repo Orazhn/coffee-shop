@@ -15,6 +15,8 @@ import useBagStore from "@/store/bagStore";
 import toast from "react-hot-toast";
 import { Truck } from "lucide-react";
 import { usePostOrder } from "@/hooks/Api/usePostOrder";
+import UseHasAddress from "@/hooks/Api/useHasAddress";
+import Link from "next/link";
 
 interface DialogProps {
   bag: Item[];
@@ -22,6 +24,7 @@ interface DialogProps {
 }
 
 const DialogComponent: FC<DialogProps> = ({ bag, total }) => {
+  const hasAddress = UseHasAddress();
   const { emptyBag } = useBagStore();
   const { orderFunc, isOrdering } = usePostOrder();
 
@@ -48,13 +51,14 @@ const DialogComponent: FC<DialogProps> = ({ bag, total }) => {
     }
   };
 
-  const confirmOrder = async () => {
-    await toast.promise(saveOrder(), {
+  const confirmOrder = () => {
+    toast.promise(saveOrder(), {
       loading: "Creating Order...",
       success: <b>Your order is coming!</b>,
       error: <b>order was not sent</b>,
     });
   };
+
   return (
     <Dialog>
       <DialogTrigger asChild>
@@ -65,6 +69,15 @@ const DialogComponent: FC<DialogProps> = ({ bag, total }) => {
       <DialogContent>
         <DialogHeader>
           <DialogTitle>Your Bag</DialogTitle>
+          {!hasAddress && (
+            <Link
+              href={"/Address"}
+              className="hover:text-red-500 text-sm text-red-800"
+            >
+              Looks like you hadn&apos;t show us your address <br />
+              Click to set your address
+            </Link>
+          )}
         </DialogHeader>
         <div className="mt-4 space-y-4">
           {bag.map((item, index) => (
@@ -94,7 +107,7 @@ const DialogComponent: FC<DialogProps> = ({ bag, total }) => {
             variant="expandIcon"
             Icon={Truck}
             iconPlacement="right"
-            disabled={isOrdering}
+            disabled={isOrdering || !hasAddress}
           >
             Order
           </Button>
