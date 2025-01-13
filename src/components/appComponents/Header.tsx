@@ -10,8 +10,10 @@ import { Input } from "../ui/input";
 import useSearchStore from "@/store/searchStore";
 import { Search } from "lucide-react";
 import { usePathname } from "next/navigation";
+import { useUser } from "@clerk/nextjs";
 
 const Header = () => {
+  const { user } = useUser();
   const { search, updateSearch } = useSearchStore();
   const pathname = usePathname();
 
@@ -55,7 +57,10 @@ const Header = () => {
               </div>
             )}
           </div>
-          <UserButton />
+          <div className="flex items-center gap-2 font-semibold">
+            {user?.username}
+            <UserButton userProfileMode="modal" />
+          </div>
         </MenubarMenu>
       </Menubar>
     </header>

@@ -15,6 +15,7 @@ import { Home, Coffee, ScrollText, ShoppingBag } from "lucide-react";
 import FavItemsSidebar from "./SidebarComponents/BagSidebar";
 import Link from "next/link";
 import CoffeeFilter from "./SidebarComponents/coffee-filter";
+import { MapPinHouse } from "lucide-react";
 
 export default function AppSidebar() {
   const items = [
@@ -37,6 +38,11 @@ export default function AppSidebar() {
       title: "Orders",
       url: "/Orders",
       icon: ScrollText,
+    },
+    {
+      title: "Address",
+      url: "/Address",
+      icon: MapPinHouse,
     },
   ];
   return (

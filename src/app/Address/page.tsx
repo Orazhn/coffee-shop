@@ -157,7 +157,7 @@ export default function EditAddressForm() {
                     </FormLabel>
                     <FormControl>
                       <div className="flex">
-                        <div className="w-[80px] h-10 flex items-center justify-center border border-input bg-background text-sm dark:bg-zinc-900 dark:border-zinc-700 dark:text-gray-100">
+                        <div className="w-[80px] h-9 flex items-center justify-center border border-input bg-background text-sm dark:bg-zinc-900 dark:border-zinc-700 dark:text-gray-100 rounded-md">
                           +7
                         </div>
                         <Input
