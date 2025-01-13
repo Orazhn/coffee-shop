@@ -1,11 +1,6 @@
 import { create } from "zustand";
 
-type FilterStore = {
-  filters: FilterState;
-  setFilter: (category: keyof FilterState, item: string) => void;
-  clearFilters: () => void;
-  setPriceRange: (newPriceRange: number[]) => void;
-};
+type FilterCategory = "grind_options" | "flavor_profiles" | "regions";
 
 type FilterState = {
   grind_options: string[];
@@ -13,6 +8,14 @@ type FilterState = {
   regions: string[];
   price_range: number[];
 };
+
+type FilterStore = {
+  filters: FilterState;
+  setFilter: (category: FilterCategory, item: string) => void;
+  clearFilters: () => void;
+  setPriceRange: (newPriceRange: number[]) => void;
+};
+
 const useFilterStore = create<FilterStore>((set) => ({
   filters: {
     grind_options: [],
@@ -22,9 +25,7 @@ const useFilterStore = create<FilterStore>((set) => ({
   },
   setFilter: (category, item) =>
     set((state) => {
-      const categoryFilters = state.filters[
-        category as keyof FilterState
-      ] as string[];
+      const categoryFilters = state.filters[category];
       const updatedFilters = categoryFilters.includes(item)
         ? categoryFilters.filter((i) => i !== item)
         : [...categoryFilters, item];

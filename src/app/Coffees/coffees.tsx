@@ -14,8 +14,9 @@ const Coffees = () => {
   }
   if (!coffees?.length) {
     return (
-      <div className=" h-full  flex items-center justify-center text-2xl">
-        Not found
+      <div className=" h-full pt-52 flex items-center flex-col justify-center gap-5 ">
+        <h1 className="text-5xl">Not found :(</h1>
+        <p>Wait for more releases</p>
       </div>
     );
   }

@@ -42,13 +42,15 @@ const filterCategories = {
     "Asia Pacific",
     "Middle East",
   ],
-};
+} as const;
+
+type FilterCategory = keyof typeof filterCategories;
 
 export default function CoffeeFilter() {
   const { filters, setFilter } = useFilterStore();
 
-  const handleFilterChange = (category: string, item: string) => {
-    setFilter(category as keyof typeof filters, item);
+  const handleFilterChange = (category: FilterCategory, item: string) => {
+    setFilter(category, item);
   };
 
   return (
@@ -58,7 +60,12 @@ export default function CoffeeFilter() {
       </CardHeader>
       <CardContent>
         <Accordion type="multiple" className="w-full">
-          {Object.entries(filterCategories).map(([category, items]) => (
+          {(
+            Object.entries(filterCategories) as unknown as [
+              FilterCategory,
+              string[]
+            ][]
+          ).map(([category, items]) => (
             <AccordionItem value={category} key={category}>
               <AccordionTrigger className="text-lg capitalize">
                 {category.replace("_", " ")}
@@ -69,9 +76,7 @@ export default function CoffeeFilter() {
                     <div className="flex items-center space-x-2" key={item}>
                       <Checkbox
                         id={`${category}-${item}`}
-                        checked={filters[
-                          category as keyof typeof filters
-                        ].includes(item)}
+                        checked={filters[category].includes(item)}
                         onCheckedChange={() =>
                           handleFilterChange(category, item)
                         }

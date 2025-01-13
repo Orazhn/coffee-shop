@@ -5,7 +5,7 @@ import Item from "@/types/DataType";
 const useFilteredAndSearchedCoffees = (
   search: string
 ): { coffees: Item[] | undefined; isLoading: boolean } => {
-  const { filters } = useFilterStore(); // Access the filters from the store
+  const { filters } = useFilterStore();
   const { data, isLoading } = useQuery({
     queryKey: ["coffees", filters, search],
     queryFn: async () => {
