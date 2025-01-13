@@ -13,7 +13,7 @@ const FavItemsSidebar = () => {
     <div className="flex items-center justify-evenly flex-col p-2 bg-slate-200 rounded-md dark:bg-zinc-950">
       <div className="flex items-center justify-between w-full ">
         <h1 className="text-gray-500 pl-2">{itemsLength}</h1>
-        <h1 className="p-2 font-mono text-center w-full font-semibold">Bag</h1>
+        <h1 className="p-2 font-mono text-center w-full font-semibold ">Bag</h1>
         <Button
           variant={"secondary"}
           onClick={() => emptyBag()}

@@ -14,6 +14,7 @@ import {
 import { Home, Coffee, ScrollText, ShoppingBag } from "lucide-react";
 import FavItemsSidebar from "./SidebarComponents/BagSidebar";
 import Link from "next/link";
+import CoffeeFilter from "./SidebarComponents/coffee-filter";
 
 export default function AppSidebar() {
   const items = [
@@ -60,6 +61,7 @@ export default function AppSidebar() {
                 </SidebarMenuItem>
               ))}
               <FavItemsSidebar />
+              <CoffeeFilter />
             </SidebarMenu>
           </SidebarGroupContent>
         </SidebarGroup>

@@ -6,7 +6,7 @@ const page = async () => {
   return (
     <div className="flex flex-col items-center justify-center gap-4 w-screen">
       <h1 className="font-mono text-xl flex gap-2 mt-5">
-        All Coffees <CoffeeIcon />
+        Coffees <CoffeeIcon />
       </h1>
       <Coffees />
     </div>
